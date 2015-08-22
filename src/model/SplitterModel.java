@@ -8,15 +8,20 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.Splitter;
 
 public class SplitterModel {
-	private List<PDDocument> listOfSplitPages;
-
+	private List<PDDocument> listOfSplittedPages;
+	
+	/**
+	 * Reading pdf file and convert this pdf into a splitted page list
+	 * @param pdfFile
+	 * @throws IOException
+	 */
 	public SplitterModel(File pdfFile) throws IOException {
 		PDDocument document = PDDocument.load(pdfFile);
 		Splitter splitter = new Splitter();
-		listOfSplitPages = splitter.split(document);
+		listOfSplittedPages = splitter.split(document);
 	}
 
 	public List<PDDocument> getDocument() {
-		return listOfSplitPages;
+		return listOfSplittedPages;
 	}
 }
