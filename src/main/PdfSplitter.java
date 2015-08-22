@@ -1,14 +1,7 @@
 package main;
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 
-import org.apache.pdfbox.exceptions.COSVisitorException;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.util.PDFTextStripper;
-import org.apache.pdfbox.util.PDFTextStripperByArea;
-import org.apache.pdfbox.util.Splitter;
+import java.io.IOException;
+
 
 import model.SplitterModel;
 import view.SplitterView;
@@ -21,6 +14,12 @@ public class PdfSplitter {
 		SplitterView.launch(SplitterView.class); // Launch the JavaFX application
 		
 		
+		
+		
+		
+		
+		
+		/*
 		
 
 		PDDocument document = PDDocument.load(new File("test.pdf"));
@@ -51,6 +50,7 @@ public class PdfSplitter {
         }        
 		
 
+	*/
 	}
 
 }
