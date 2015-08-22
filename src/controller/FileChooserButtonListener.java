@@ -32,11 +32,7 @@ public class FileChooserButtonListener implements EventHandler<ActionEvent> {
 			if(getFileExtension(selectedFile.getAbsolutePath()).equals("pdf")){
 				originalPDF.setText("Selected PDF : " + selectedFile.getName());
 				hbox.setVisible(true);
-				
-				
-				String absolutePath = selectedFile.getAbsolutePath();
-				String filePath = absolutePath.substring(0,absolutePath.lastIndexOf(File.separator));
-				
+	
 				//Sending pdf file to model
 				try {
 					PdfSplitter.model = new SplitterModel(selectedFile);
