@@ -10,9 +10,28 @@ import org.apache.pdfbox.util.PDFTextStripper;
 import org.apache.pdfbox.util.PDFTextStripperByArea;
 import org.apache.pdfbox.util.Splitter;
 
+import view.SplitterView;
+
 public class PdfSpiltter {
 
 	public static void main(String[] args) throws IOException {
+		
+		
+		
+		SplitterView.launch(SplitterView.class); // Launch the JavaFX application
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		PDDocument document = PDDocument.load(new File("test.pdf"));
 

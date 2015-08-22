@@ -1,10 +1,7 @@
 package view;
-import java.io.File;
 
 import controller.SplitButtonLister;
 import javafx.application.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
@@ -23,6 +20,10 @@ public class SplitterView extends Application {
 	private Text originalPDF;
 	private Text outputPDF;
 	private String title = "PDF Splitter";
+	
+	public SplitterView() {
+
+	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -83,19 +84,7 @@ public class SplitterView extends Application {
 		Scene scene = new Scene(vbox, 500, 400); // w x h
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			
 	}
-
-	public static void main(String[] args) {
-		Application.launch(args);
-	}
-
+	
 }
