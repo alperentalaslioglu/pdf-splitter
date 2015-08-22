@@ -14,6 +14,7 @@ public class IntegerTextField extends TextField {
 				char enteredChar = t.getCharacter().charAt(0);
 				if (!(enteredChar >= '0' && enteredChar <= '9')) {
 					showAlert("Illegal Argument", "Wrong input type", "Please enter number!");
+					clear();
 				}
 			}
 		});

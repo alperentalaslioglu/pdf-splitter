@@ -25,6 +25,7 @@ public class SplitterView extends Application {
 
 	}
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle(title);
