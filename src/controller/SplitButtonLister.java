@@ -1,9 +1,11 @@
 package controller;
+
 import java.io.IOException;
 import java.util.Iterator;
 
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,59 +15,56 @@ import main.PdfSplitter;
 import javafx.scene.control.TextField;
 
 public class SplitButtonLister implements EventHandler<ActionEvent> {
-	private TextField fromPageNumber; 
+	private TextField fromPageNumber;
 	private TextField toPageNumber;
 
 	public SplitButtonLister(TextField fromPageNumber, TextField toPageNumber) {
 		this.fromPageNumber = fromPageNumber;
-		this.toPageNumber = toPageNumber;	
+		this.toPageNumber = toPageNumber;
 	}
 
 	@Override
 	public void handle(ActionEvent arg0) {
-		if( fromPageNumber.getText().isEmpty() || toPageNumber.getText().isEmpty() ){
-			showAlert("Error","Empty Number Fields","Please enter start and end number fields.");
-		}else if(
-				Integer.parseInt(fromPageNumber.getText().trim()) 
-				- 
-				Integer.parseInt(toPageNumber.getText().trim())
-				> 0
-				){
-			
-			showAlert("Error","Invalid Numbers","Please enter valid inputs.");
-			
-		}else{
-			
+		if (fromPageNumber.getText().isEmpty() || toPageNumber.getText().isEmpty()) {
+			showAlert("Error", "Empty Number Fields", "Please enter start and end number fields.");
+		} else if (Integer.parseInt(fromPageNumber.getText().trim())
+				- Integer.parseInt(toPageNumber.getText().trim()) > 0) {
+
+			showAlert("Error", "Invalid Numbers", "Please enter valid inputs.");
+
+		} else {
+
 			int start = Integer.parseInt(fromPageNumber.getText().trim());
 			int end = Integer.parseInt(toPageNumber.getText().trim());
-			
-			String path =  PdfSplitter.model.getFilePath();
-			
+
+			String path = PdfSplitter.model.getFilePath();
+
 			Iterator<PDDocument> iterator = PdfSplitter.model.getDocument().listIterator();
-			
-			// I am using variable i to denote page numbers. 
-	        int i = 1;
-	        PDDocument pd = null;
-	        while(iterator.hasNext()){
-	            pd = iterator.next();
-	            
-	          
-	               
-	                   
-	        } 
-	        
-	        try {
+
+			// I am using variable i to denote page numbers.
+			int i = 1;
+			PDDocument pd = null;
+			while (iterator.hasNext()) {
+				PDDocument tmp = iterator.next();
+
+				if (i >= start && i <= end) {
+
+					pd.addPage((PDPage) tmp.getDocumentCatalog().getAllPages().get(0));
+				
+				}
+
+				i++;
+			}
+
+			try {
 				pd.save("path" + i++ + ".pdf");
 			} catch (COSVisitorException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
+
 		}
-		
-		
-		
+
 	}
 
 	private void showAlert(String title, String header, String text) {
@@ -77,6 +76,3 @@ public class SplitButtonLister implements EventHandler<ActionEvent> {
 	}
 
 }
-
-
-
