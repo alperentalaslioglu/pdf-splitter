@@ -1,17 +1,9 @@
 package controller;
 
-import java.io.IOException;
-import java.util.Iterator;
-
-import org.apache.pdfbox.exceptions.COSVisitorException;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import main.PdfSplitter;
 import javafx.scene.control.TextField;
 
 public class SplitButtonLister implements EventHandler<ActionEvent> {
@@ -37,31 +29,7 @@ public class SplitButtonLister implements EventHandler<ActionEvent> {
 			int start = Integer.parseInt(fromPageNumber.getText().trim());
 			int end = Integer.parseInt(toPageNumber.getText().trim());
 
-			String path = PdfSplitter.model.getFilePath();
-
-			Iterator<PDDocument> iterator = PdfSplitter.model.getDocument().listIterator();
-
-			// I am using variable i to denote page numbers.
-			int i = 1;
-			PDDocument pd = null;
-			while (iterator.hasNext()) {
-				PDDocument tmp = iterator.next();
-
-				if (i >= start && i <= end) {
-
-					pd.addPage((PDPage) tmp.getDocumentCatalog().getAllPages().get(0));
-				
-				}
-
-				i++;
-			}
-
-			try {
-				pd.save("path" + i++ + ".pdf");
-			} catch (COSVisitorException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 
 		}
 
