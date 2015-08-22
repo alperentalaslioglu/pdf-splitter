@@ -1,12 +1,15 @@
 package controller;
 
 import java.io.File;
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import main.PdfSplitter;
+import model.SplitterModel;
 
 public class FileChooserButtonListener implements EventHandler<ActionEvent> {
 	private Text originalPDF;
@@ -29,6 +32,14 @@ public class FileChooserButtonListener implements EventHandler<ActionEvent> {
 			if(getFileExtension(selectedFile.getAbsolutePath()).equals("pdf")){
 				originalPDF.setText("Selected PDF : " + selectedFile.getName());
 				hbox.setVisible(true);
+				
+				//Sending pdf file to model
+				try {
+					PdfSplitter.model = new SplitterModel(selectedFile);
+				} catch (IOException exception) {
+					exception.printStackTrace();
+				}
+				
 			}else{
 				originalPDF.setText("Invalid file format.");
 			}

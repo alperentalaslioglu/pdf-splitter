@@ -10,25 +10,15 @@ import org.apache.pdfbox.util.PDFTextStripper;
 import org.apache.pdfbox.util.PDFTextStripperByArea;
 import org.apache.pdfbox.util.Splitter;
 
+import model.SplitterModel;
 import view.SplitterView;
 
-public class PdfSpiltter {
+public class PdfSplitter {
+	public static SplitterModel model;
 
 	public static void main(String[] args) throws IOException {
 		
-		
-		//View
 		SplitterView.launch(SplitterView.class); // Launch the JavaFX application
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		

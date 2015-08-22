@@ -29,6 +29,8 @@ public class SplitButtonLister implements EventHandler<ActionEvent> {
 			
 		}else{
 			
+			int start = Integer.parseInt(fromPageNumber.getText().trim());
+			int end = Integer.parseInt(toPageNumber.getText().trim());
 			
 			
 			
