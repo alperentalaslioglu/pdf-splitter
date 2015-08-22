@@ -17,7 +17,7 @@ public class PdfSpiltter {
 	public static void main(String[] args) throws IOException {
 		
 		
-		
+		//View
 		SplitterView.launch(SplitterView.class); // Launch the JavaFX application
 		
 		

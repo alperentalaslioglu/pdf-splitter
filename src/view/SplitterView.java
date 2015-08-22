@@ -21,10 +21,6 @@ public class SplitterView extends Application {
 	private Text outputPDF;
 	private String title = "PDF Splitter";
 	
-	public SplitterView() {
-
-	}
-	
 	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
