@@ -17,6 +17,7 @@ public class SplitterModel {
 	 * @param selectedFile
 	 * @throws IOException
 	 */
+	@SuppressWarnings("static-access")
 	public SplitterModel(File selectedFile) throws IOException {
 		this.selectedFile = selectedFile;
 		FileInputStream inputStream = new FileInputStream(selectedFile.getAbsolutePath());
