@@ -33,8 +33,12 @@ public class SplitButtonListener implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent arg0) {
 		if (fromPageNumber.getText().isEmpty() || toPageNumber.getText().isEmpty()) {
 			CommonMethods.showAlert("Error", "Empty Number Fields", "Please enter start and end number fields.");
-		} else if (Integer.parseInt(fromPageNumber.getText().trim())
-				- Integer.parseInt(toPageNumber.getText().trim()) > 0) {
+		} else if (
+				Integer.parseInt(fromPageNumber.getText().trim())
+				- 
+				Integer.parseInt(toPageNumber.getText().trim()) 
+				> 0
+				) {
 
 			CommonMethods.showAlert("Error", "Invalid Numbers", "Please enter valid inputs.");
 
