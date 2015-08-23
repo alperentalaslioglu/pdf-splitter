@@ -19,11 +19,11 @@ import javafx.scene.control.TextField;
 import main.PdfSplitter;
 import model.SplitterModel;
 
-public class SplitButtonLister implements EventHandler<ActionEvent> {
+public class SplitButtonListener implements EventHandler<ActionEvent> {
 	private TextField fromPageNumber;
 	private TextField toPageNumber;
 
-	public SplitButtonLister(TextField fromPageNumber, TextField toPageNumber) {
+	public SplitButtonListener(TextField fromPageNumber, TextField toPageNumber) {
 		this.fromPageNumber = fromPageNumber;
 		this.toPageNumber = toPageNumber;
 	}

@@ -1,6 +1,6 @@
 package view;
 
-import controller.SplitButtonLister;
+import controller.SplitButtonListener;
 import javafx.application.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -60,7 +60,7 @@ public class SplitterView extends Application {
 		hbox.setMargin(toPageNumber, new Insets(0, 5, 0, 0));
 		hbox.getChildren().addAll(fromPageNumber,toPageNumber,splitButton);
 		hbox.setVisible(false);
-		splitButton.setOnAction(new SplitButtonLister(fromPageNumber,toPageNumber));
+		splitButton.setOnAction(new SplitButtonListener(fromPageNumber,toPageNumber));
 
 		// Pdf Chooser Button
 		Button pdfChooseButton = new Button("Choose a pdf");
