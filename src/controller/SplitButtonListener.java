@@ -47,54 +47,58 @@ public class SplitButtonListener implements EventHandler<ActionEvent> {
 			int start = Integer.parseInt(fromPageNumber.getText().trim());
 			int end = Integer.parseInt(toPageNumber.getText().trim());
 
-			// Create a writer for the outputstream
 			Document document = new Document();
-
-			String outputPath = PdfSplitter.model.getFilePath() + "\\splitted.pdf";
-			FileOutputStream outputStream = null;
-			try {
-				outputStream = new FileOutputStream(outputPath);
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-			PdfWriter writer = null;
-			try {
-				writer = PdfWriter.getInstance(document, outputStream);
-			} catch (DocumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			document.open();
-			PdfContentByte cb = writer.getDirectContent(); // Holds the PDF data
-			PdfImportedPage page;
-			PdfReader inputPDF = PdfSplitter.model.getPDFInput();
-
-
-			while (start <= end) {
-				document.newPage();
-				page = writer.getImportedPage(inputPDF, start);
-				cb.addTemplate(page, 0, 0);
-				start++;
-			}
-			try {
-				outputStream.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			document.close();
-			try {
-				outputStream.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
+			FileOutputStream outputStream = createOutputStream();
+			outputSplittedPdf(start, end, document, outputStream);
+			closeFileOutput(document, outputStream);
 		}
 
+	}
+
+	public FileOutputStream createOutputStream() {
+		String outputPath = PdfSplitter.model.getFilePath() + "\\splitted.pdf";
+		FileOutputStream outputStream = null;
+		try {
+			outputStream = new FileOutputStream(outputPath);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return outputStream;
+	}
+
+	public void outputSplittedPdf(int start, int end, Document document, FileOutputStream outputStream) {
+		PdfWriter writer = null;
+		try {
+			writer = PdfWriter.getInstance(document, outputStream);
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		document.open();
+		PdfContentByte cb = writer.getDirectContent(); // Holds the PDF data
+		PdfImportedPage page;
+		PdfReader inputPDF = PdfSplitter.model.getPDFInput();
+
+
+		while (start <= end) {
+			document.newPage();
+			page = writer.getImportedPage(inputPDF, start);
+			cb.addTemplate(page, 0, 0);
+			start++;
+		}
+	}
+
+	public void closeFileOutput(Document document, FileOutputStream outputStream) {
+		try {
+			outputStream.flush();
+			outputStream.close();
+			document.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
