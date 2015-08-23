@@ -1,10 +1,16 @@
 package model;
 
+/**
+ * 
+ * This is an integer textfield implementation
+ * The textfield only accept integer numbers
+ * 
+ */
+
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
+import main.CommonMethods;
 
 public class IntegerTextField extends TextField {
 
@@ -13,19 +19,10 @@ public class IntegerTextField extends TextField {
 			public void handle(KeyEvent t) {
 				char enteredChar = t.getCharacter().charAt(0);
 				if (!(enteredChar >= '0' && enteredChar <= '9')) {
-					showAlert("Illegal Argument", "Wrong input type", "Please enter number!");
+					CommonMethods.showAlert("Illegal Argument", "Wrong input type", "Please enter number!");
 					clear();
 				}
 			}
 		});
 	}
-
-	private void showAlert(String title, String header, String text) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle(title);
-		alert.setHeaderText(header);
-		alert.setContentText(text);
-		alert.show();
-	}
-
 }
