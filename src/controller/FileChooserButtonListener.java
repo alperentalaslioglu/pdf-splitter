@@ -13,7 +13,6 @@ import model.SplitterModel;
 
 public class FileChooserButtonListener implements EventHandler<ActionEvent> {
 	private Text originalPDF;
-	private Text outputPDF;
 	private HBox hbox;
 	
 	public FileChooserButtonListener(Text originalPDF, HBox hbox) {

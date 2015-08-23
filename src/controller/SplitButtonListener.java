@@ -16,6 +16,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
+import main.CommonMethods;
 import main.PdfSplitter;
 import model.SplitterModel;
 
@@ -31,11 +32,11 @@ public class SplitButtonListener implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent arg0) {
 		if (fromPageNumber.getText().isEmpty() || toPageNumber.getText().isEmpty()) {
-			showAlert("Error", "Empty Number Fields", "Please enter start and end number fields.");
+			CommonMethods.showAlert("Error", "Empty Number Fields", "Please enter start and end number fields.");
 		} else if (Integer.parseInt(fromPageNumber.getText().trim())
 				- Integer.parseInt(toPageNumber.getText().trim()) > 0) {
 
-			showAlert("Error", "Invalid Numbers", "Please enter valid inputs.");
+			CommonMethods.showAlert("Error", "Invalid Numbers", "Please enter valid inputs.");
 
 		} else {
 
@@ -90,14 +91,6 @@ public class SplitButtonListener implements EventHandler<ActionEvent> {
 
 		}
 
-	}
-
-	private void showAlert(String title, String header, String text) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle(title);
-		alert.setHeaderText(header);
-		alert.setContentText(text);
-		alert.show();
 	}
 
 }
