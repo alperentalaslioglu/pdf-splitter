@@ -50,7 +50,7 @@ public class SplitButtonListener implements EventHandler<ActionEvent> {
 			Document document = new Document();
 			FileOutputStream outputStream = createOutputStream();
 			outputSplittedPdf(start, end, document, outputStream);
-			closeFileOutput(document, outputStream);
+			CommonMethods.showAlert("Success!", "Splitted!", "PDF successfully splitted!. Look your absolute path!");
 		}
 
 	}
@@ -88,13 +88,15 @@ public class SplitButtonListener implements EventHandler<ActionEvent> {
 			cb.addTemplate(page, 0, 0);
 			start++;
 		}
+		
+		closeFileOutput(document, outputStream);
 	}
 
 	public void closeFileOutput(Document document, FileOutputStream outputStream) {
 		try {
 			outputStream.flush();
-			outputStream.close();
 			document.close();
+			outputStream.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
