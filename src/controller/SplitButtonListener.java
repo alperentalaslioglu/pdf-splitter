@@ -38,7 +38,7 @@ public class SplitButtonListener implements EventHandler<ActionEvent> {
 				- 
 				Integer.parseInt(toPageNumber.getText().trim()) 
 				> 0
-				) {
+				) {// if( start < end )
 
 			CommonMethods.showAlert("Error", "Invalid Numbers", "Please enter valid inputs.");
 
@@ -61,8 +61,8 @@ public class SplitButtonListener implements EventHandler<ActionEvent> {
 		try {
 			outputStream = new FileOutputStream(outputPath);
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			CommonMethods.showAlert("Error!", "Not Splitted!", "PDF was not splitted!");
 		}
 		return outputStream;
 	}
@@ -72,8 +72,8 @@ public class SplitButtonListener implements EventHandler<ActionEvent> {
 		try {
 			writer = PdfWriter.getInstance(document, outputStream);
 		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			CommonMethods.showAlert("Error!", "Not Splitted!", "PDF was not splitted!");
 		}
 
 		document.open();
@@ -98,7 +98,6 @@ public class SplitButtonListener implements EventHandler<ActionEvent> {
 			document.close();
 			outputStream.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
