@@ -20,10 +20,12 @@ public class SplitterView extends Application {
 	private Text originalPDF;
 	private Text outputPDF;
 	private String title = "PDF Splitter";
+	public static Stage primaryStage;
 	
 	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		this.primaryStage = primaryStage;
 		primaryStage.setTitle(title);
 		
 		// Window label
