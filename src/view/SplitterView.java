@@ -17,8 +17,7 @@ import model.IntegerTextField;
 import controller.*;
 
 public class SplitterView extends Application {
-	private Text originalPDF;
-	private Text outputPDF;
+	private Text chosenPDFName;
 	private String title = "PDF Splitter";
 	public static Stage primaryStage;
 	
@@ -37,50 +36,43 @@ public class SplitterView extends Application {
 		labelHb.getChildren().add(label);
 		
 		// Input File Name
-		originalPDF = new Text();
-		originalPDF.setFont(Font.font("Calibri", FontWeight.NORMAL, 12));
-		originalPDF.setFill(Color.FIREBRICK);
-		
-		//Output File 
-		outputPDF = new Text();
-		outputPDF.setFont(Font.font("Calibri", FontWeight.NORMAL, 12));
-		outputPDF.setFill(Color.FIREBRICK);		
-				
-		////Split borders
-		//From Page
+		chosenPDFName = new Text();
+		chosenPDFName.setFont(Font.font("Calibri", FontWeight.NORMAL, 12));
+		chosenPDFName.setFill(Color.FIREBRICK);
+						
+		// From Page
 		TextField fromPageNumber = new IntegerTextField();
 		fromPageNumber.setPromptText("Start");
 		fromPageNumber.setMaxWidth(50);
 		
-		//End Page
+		// End Page
 		TextField toPageNumber = new IntegerTextField();
 		toPageNumber.setPromptText("End");
 		toPageNumber.setMaxWidth(50);
-
 		
-		Button btn2 = new Button("Split!");
+		// Split Button
+		Button splitButton = new Button("Split!");
 		
+		// Horizontal Box
 		HBox hbox = new HBox();
 		hbox.setPadding(new Insets(25, 25, 25, 0));
 		hbox.setMargin(fromPageNumber, new Insets(0, 5, 0, 0));
 		hbox.setMargin(toPageNumber, new Insets(0, 5, 0, 0));
-		hbox.getChildren().addAll(fromPageNumber,toPageNumber,btn2);
+		hbox.getChildren().addAll(fromPageNumber,toPageNumber,splitButton);
 		hbox.setVisible(false);
-		btn2.setOnAction(new SplitButtonLister(fromPageNumber,toPageNumber));
+		splitButton.setOnAction(new SplitButtonLister(fromPageNumber,toPageNumber));
 
-				
 		// Pdf Chooser Button
-		Button btn1 = new Button("Choose a file");
-		btn1.setOnAction(new FileChooserButtonListener(originalPDF,outputPDF,hbox));	
+		Button pdfChooseButton = new Button("Choose a pdf");
+		pdfChooseButton.setOnAction(new FileChooserButtonListener(chosenPDFName,hbox));	
 		
-		// Vbox
+		// Vertical box
 		VBox vbox = new VBox(30);
 		vbox.setPadding(new Insets(25, 25, 25, 25));
-		vbox.getChildren().addAll(labelHb,btn1,originalPDF,hbox);
-		
+		vbox.getChildren().addAll(labelHb,pdfChooseButton,chosenPDFName,hbox);
 		
 		// Scene
-		Scene scene = new Scene(vbox, 500, 400); // w x h
+		Scene scene = new Scene(vbox, 500, 400); // width x height
 		primaryStage.setScene(scene);
 		primaryStage.show();
 			

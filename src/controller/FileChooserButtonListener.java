@@ -16,9 +16,8 @@ public class FileChooserButtonListener implements EventHandler<ActionEvent> {
 	private Text outputPDF;
 	private HBox hbox;
 	
-	public FileChooserButtonListener(Text originalPDF, Text outputPDF, HBox hbox) {
+	public FileChooserButtonListener(Text originalPDF, HBox hbox) {
 		this.originalPDF = originalPDF;
-		this.outputPDF = outputPDF;
 		this.hbox = hbox;
 	}
 
