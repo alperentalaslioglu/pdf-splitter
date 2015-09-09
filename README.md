@@ -6,7 +6,7 @@ Download : https://github.com/AlperenTalaslioglu/PDFSplitter/blob/master/PDFSpli
 
 Coded in Java 8 and Javafx
 
-Dependecies:
+Dependencies:
 * iTextpdf 5.5.6
 * bcprov-jdk15on-152
 
