@@ -4,7 +4,9 @@ A pdf splitter that split a pdf file into one or more pdf pieces by entered spec
 
 Download : https://github.com/AlperenTalaslioglu/PDFSplitter/blob/master/PDFSplitter.jar?raw=true
 
-Coded in Java 8 and Javafx
+Size: 4.9 Mb
+
+Coded in Java 8 and JavaFX
 
 Dependencies:
 * iTextpdf 5.5.6
